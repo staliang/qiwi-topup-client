@@ -15,11 +15,15 @@ import java.util.List;
 public class TransferResponse extends ResponseWithResultCode {
 
     @XmlElement(name = "payment")
-    private Payment payment;
+    private PaymentExtend payment;
+
+    @XmlElementWrapper(name = "balances")
+    @XmlElement(name = "balance")
+    private List<Balance> balances;
 
     @Getter
     @ToString
-    private static class Payment {
+    public static class PaymentExtend extends Payment {
 
         @XmlElement(name = "from")
         private From from;
@@ -27,13 +31,9 @@ public class TransferResponse extends ResponseWithResultCode {
         @XmlElement(name = "to")
         private To to;
 
-        @XmlElementWrapper(name = "balances")
-        @XmlElement(name = "balance")
-        private List<Balance> balances;
-
         @Getter
         @ToString
-        private static class From {
+        public static class From {
 
             @XmlElement(name = "amount")
             private BigDecimal amount;
@@ -44,7 +44,7 @@ public class TransferResponse extends ResponseWithResultCode {
 
         @Getter
         @ToString
-        private static class To {
+        public static class To {
 
             @XmlElement(name = "service-id")
             private Long serviceId;
