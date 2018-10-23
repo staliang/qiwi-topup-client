@@ -1,4 +1,4 @@
-package com.staliang.qiwi.model;
+package com.staliang.qiwi.topup.model;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public class Balance {
 
     @XmlAttribute(name = "code")
-    private String code;
+    private int code;
 
     @XmlValue
     private BigDecimal value;

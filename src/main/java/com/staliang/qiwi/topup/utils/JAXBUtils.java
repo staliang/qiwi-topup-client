@@ -1,4 +1,4 @@
-package com.staliang.qiwi.utils;
+package com.staliang.qiwi.topup.utils;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

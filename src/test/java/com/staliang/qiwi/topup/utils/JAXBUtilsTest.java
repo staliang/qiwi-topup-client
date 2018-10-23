@@ -1,6 +1,6 @@
-package com.staliang.qiwi.utils;
+package com.staliang.qiwi.topup.utils;
 
-import com.staliang.qiwi.model.TransferRequest;
+import com.staliang.qiwi.topup.model.TransferRequest;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBException;

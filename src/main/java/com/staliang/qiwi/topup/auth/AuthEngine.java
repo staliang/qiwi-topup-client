@@ -1,7 +1,7 @@
-package com.staliang.qiwi.auth;
+package com.staliang.qiwi.topup.auth;
 
-import com.staliang.qiwi.model.Extra;
-import com.staliang.qiwi.model.RequestWithExtraPassword;
+import com.staliang.qiwi.topup.model.Extra;
+import com.staliang.qiwi.topup.model.RequestWithExtraPassword;
 
 public interface AuthEngine {
 

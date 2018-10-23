@@ -1,4 +1,4 @@
-package com.staliang.qiwi.model;
+package com.staliang.qiwi.topup.model;
 
 import lombok.Getter;
 import lombok.ToString;

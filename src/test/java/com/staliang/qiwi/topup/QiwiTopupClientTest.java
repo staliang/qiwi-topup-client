@@ -1,10 +1,10 @@
-package com.staliang.qiwi;
+package com.staliang.qiwi.topup;
 
-import com.staliang.qiwi.auth.AuthEngine;
-import com.staliang.qiwi.model.CheckClientResponse;
-import com.staliang.qiwi.model.GetBalanceResponse;
-import com.staliang.qiwi.model.GetStatusOfPaymentResponse;
-import com.staliang.qiwi.model.TransferResponse;
+import com.staliang.qiwi.topup.auth.AuthEngine;
+import com.staliang.qiwi.topup.model.CheckClientResponse;
+import com.staliang.qiwi.topup.model.GetBalanceResponse;
+import com.staliang.qiwi.topup.model.GetStatusOfPaymentResponse;
+import com.staliang.qiwi.topup.model.TransferResponse;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBException;

@@ -1,4 +1,4 @@
-package com.staliang.qiwi.model;
+package com.staliang.qiwi.topup.model;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
