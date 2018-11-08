@@ -25,7 +25,7 @@ public class Payment {
     private Date transactionDate;
 
     @XmlAttribute(name = "transaction-number")
-    private String transactionNumber;
+    private Long transactionNumber;
 
     @XmlAttribute(name = "result-code")
     private int resultCode;
