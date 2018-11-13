@@ -22,16 +22,17 @@ public class TransferRequest extends RequestWithExtraPassword {
 
     // only for JAXB
     private TransferRequest() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null);
     }
 
     public TransferRequest(Long terminalId, Long transactionNumber, Currency sourceCurrency, BigDecimal amount,
-                           Currency destinationCurrency, String accountNumber) {
+                           Currency destinationCurrency, String accountNumber, String comment) {
         this.terminalId = terminalId;
 
         if (transactionNumber != null) {
             Auth.Payment.Source source = new Auth.Payment.Source(sourceCurrency);
-            Auth.Payment.Destination destination = new Auth.Payment.Destination(amount, destinationCurrency, accountNumber);
+            Auth.Payment.Destination destination = new Auth.Payment.Destination(
+                    amount, destinationCurrency, accountNumber, comment);
 
             this.auth = new Auth(new Auth.Payment(transactionNumber, source, destination));
         }
@@ -93,10 +94,11 @@ public class TransferRequest extends RequestWithExtraPassword {
                 @XmlElement(name = "extra")
                 private ExtraComment extra;
 
-                private Destination(BigDecimal amount, Currency currency, String accountNumber) {
+                private Destination(BigDecimal amount, Currency currency, String accountNumber, String comment) {
                     this.amount = amount;
                     this.currencyCode = currency != null ? currency.getCurrencyCode() : null;
                     this.accountNumber = accountNumber;
+                    this.extra = new ExtraComment(comment);
                 }
 
                 private static class ExtraComment extends Extra {

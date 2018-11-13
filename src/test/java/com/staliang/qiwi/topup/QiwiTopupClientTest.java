@@ -28,7 +28,7 @@ public class QiwiTopupClientTest {
     @Test
     public void transfer() throws IOException, JAXBException {
         TransferResponse result = qiwiTopupClient.transfer(TERMINAL_ID, System.currentTimeMillis(), DEFAULT_CURRENCY,
-                BigDecimal.valueOf(0.1), DEFAULT_CURRENCY, ACCOUNT_NUMBER);
+                BigDecimal.valueOf(0.1), DEFAULT_CURRENCY, ACCOUNT_NUMBER, "comment");
 
         assertNotNull(result);
     }

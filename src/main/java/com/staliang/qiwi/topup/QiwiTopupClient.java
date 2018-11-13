@@ -49,9 +49,9 @@ public class QiwiTopupClient {
     }
 
     public TransferResponse transfer(Long terminalId, Long transactionNumber, Currency sourceCurrency, BigDecimal amount,
-                                     Currency destinationCurrency, String accountNumber) throws IOException, JAXBException {
+                                     Currency destinationCurrency, String accountNumber, String comment) throws IOException, JAXBException {
         TransferRequest request = new TransferRequest(terminalId, transactionNumber, sourceCurrency,
-                amount, destinationCurrency, accountNumber);
+                amount, destinationCurrency, accountNumber, comment);
         return sendRequest(request, TransferResponse.class);
     }
 
