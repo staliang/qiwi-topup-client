@@ -16,10 +16,10 @@ public class JAXBUtilsTest {
     @Test
     public void toXML() throws JAXBException, IOException {
         TransferRequest request = new TransferRequest(1L, 2L, Currency.getInstance("RUB"),
-                BigDecimal.TEN, Currency.getInstance("RUB"), "accountNumber", "comment");
+                BigDecimal.TEN, Currency.getInstance("RUB"), "89090556459", "comment");
 
         String result = JAXBUtils.toXML(request);
-        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><request><request-type>pay</request-type><terminal-id>1</terminal-id><auth><payment><transaction-number>2</transaction-number><from><ccy>RUB</ccy></from><to><amount>10</amount><ccy>RUB</ccy><service-id>99</service-id><account-number>accountNumber</account-number><extra name=\"comment\">comment</extra></to></payment></auth></request>", result);
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?><request><request-type>pay</request-type><terminal-id>1</terminal-id><auth><payment><transaction-number>2</transaction-number><from><ccy>RUB</ccy></from><to><amount>10</amount><ccy>RUB</ccy><service-id>99</service-id><account-number>89090556459</account-number><extra name=\"comment\">comment</extra></to></payment></auth></request>", result);
     }
 
     @Test
