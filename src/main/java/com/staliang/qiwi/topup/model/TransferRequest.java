@@ -79,6 +79,9 @@ public class TransferRequest extends RequestWithExtraPassword {
 
             private static class Destination {
 
+                private static final long CARD_SERVICE_ID = 34020L;
+                private static final long WALLET_SERVICE_ID = 99L;
+
                 @XmlElement(name = "amount")
                 private final BigDecimal amount;
 
@@ -86,7 +89,7 @@ public class TransferRequest extends RequestWithExtraPassword {
                 private final String currencyCode;
 
                 @XmlElement(name = "service-id")
-                private final Long serviceId = 99L;
+                private final Long serviceId;
 
                 @XmlElement(name = "account-number")
                 private final String accountNumber;
@@ -98,7 +101,16 @@ public class TransferRequest extends RequestWithExtraPassword {
                     this.amount = amount;
                     this.currencyCode = currency != null ? currency.getCurrencyCode() : null;
                     this.accountNumber = accountNumber;
+                    if (isCardNumber(accountNumber)) {
+                        serviceId = CARD_SERVICE_ID;
+                    } else {
+                        serviceId = WALLET_SERVICE_ID;
+                    }
                     this.extra = new ExtraComment(comment);
+                }
+
+                private boolean isCardNumber(String accountNumber) {
+                    return accountNumber.trim().length() > 12;
                 }
 
                 private static class ExtraComment extends Extra {
