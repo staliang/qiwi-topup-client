@@ -16,7 +16,7 @@ public abstract class ResponseWithResultCode {
 
     @Getter
     @ToString
-    private static class ResultCode {
+    public static class ResultCode {
 
         @XmlAttribute(name = "fatal")
         private boolean fatal;

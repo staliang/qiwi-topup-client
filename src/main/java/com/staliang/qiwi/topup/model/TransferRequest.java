@@ -69,9 +69,6 @@ public class TransferRequest extends RequestWithExtraPassword {
                 @XmlElement(name = "ccy")
                 private final String currencyCode;
 
-                @XmlElement(name = "service-id")
-                private Long serviceId;
-
                 private Source(Currency currency) {
                     this.currencyCode = currency != null ? currency.getCurrencyCode() : null;
                 }

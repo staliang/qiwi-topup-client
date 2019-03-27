@@ -43,7 +43,7 @@ public class QiwiTopupClient {
             httpPost.setEntity(new StringEntity(JAXBUtils.toXML(request)));
 
             try (CloseableHttpResponse httpResponse = httpClient.execute(httpPost)) {
-                return JAXBUtils.fromXML(EntityUtils.toString(httpResponse.getEntity()), clazz);
+                return JAXBUtils.fromXML(EntityUtils.toString(httpResponse.getEntity(), "UTF-8"), clazz);
             }
         }
     }
