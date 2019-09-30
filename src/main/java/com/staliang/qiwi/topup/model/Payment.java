@@ -36,6 +36,9 @@ public class Payment {
     @XmlAttribute(name = "fatal-error")
     private boolean fatalError;
 
+    @XmlAttribute(name = "message")
+    private String message;
+
     private static class DateAdapter extends XmlAdapter<String, Date> {
 
         private final DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
