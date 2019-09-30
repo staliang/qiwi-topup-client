@@ -11,6 +11,7 @@ import com.staliang.qiwi.topup.model.RequestWithExtraPassword;
 import com.staliang.qiwi.topup.model.TransferRequest;
 import com.staliang.qiwi.topup.model.TransferResponse;
 import com.staliang.qiwi.topup.utils.JAXBUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Currency;
 
+@Slf4j
 public class QiwiTopupClient {
 
     private static final String DEFAULT_URL = "https://api.qiwi.com/xml/topup.jsp";
@@ -34,18 +36,28 @@ public class QiwiTopupClient {
     }
 
     private <T> T sendRequest(RequestWithExtraPassword request, Class<T> clazz) throws IOException, JAXBException {
+        if (log.isDebugEnabled()) {
+            log.debug("Request to QIWI: {}", toXML(request));
+        }
+
         if (authEngine.isAuthByRequest()) {
             authEngine.addAuthInfoToRequest(request);
         }
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
             HttpPost httpPost = new HttpPost(DEFAULT_URL);
-            httpPost.setEntity(new StringEntity(JAXBUtils.toXML(request)));
+            httpPost.setEntity(new StringEntity(toXML(request)));
 
             try (CloseableHttpResponse httpResponse = httpClient.execute(httpPost)) {
-                return JAXBUtils.fromXML(EntityUtils.toString(httpResponse.getEntity(), "UTF-8"), clazz);
+                String response = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+                log.debug("Response from QIWI: {}", response);
+                return JAXBUtils.fromXML(response, clazz);
             }
         }
+    }
+
+    private String toXML(RequestWithExtraPassword request) throws JAXBException, IOException {
+        return JAXBUtils.toXML(request);
     }
 
     public TransferResponse transfer(Long terminalId, Long transactionNumber, Currency sourceCurrency, BigDecimal amount,
