@@ -1,5 +1,11 @@
 Java client for Qiwi Topup service (https://developer.qiwi.com/ru/topup-wallet/index.html#introduction)
 
+# What is deleoped in the last version?
+- [Get balance](https://developer.qiwi.com/ru/topup-wallet/#get-balance)
+- [Check user](https://developer.qiwi.com/ru/topup-wallet/#check-user)
+- [Payment](https://developer.qiwi.com/ru/topup-wallet/#payment)
+- [Payment's status](https://developer.qiwi.com/ru/topup-wallet/#status)
+
 # How can I use it?
 First of all, you need add the next repository into your pom.xml
 ```xml
