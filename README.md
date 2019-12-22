@@ -1,6 +1,6 @@
 Java client for Qiwi Topup service (https://developer.qiwi.com/ru/topup-wallet/index.html#introduction)
 
-# What is deleoped in the last version?
+# What is developed in the last version?
 - [Get balance](https://developer.qiwi.com/ru/topup-wallet/#get-balance)
 - [Check user](https://developer.qiwi.com/ru/topup-wallet/#check-user)
 - [Payment](https://developer.qiwi.com/ru/topup-wallet/#payment)
